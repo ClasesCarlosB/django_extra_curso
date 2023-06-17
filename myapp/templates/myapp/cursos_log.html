@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de cursos</title>
+</head>
+
+<body>
+
+    <p> Usted ingreso con la cuenta: <strong
+            style="border-style: dashed; font-size: 20px; padding: 5px;">{{user.username}} </strong>
+    <p>
+        <br>
+        <br>
+    <table style="border: 1px solid">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Truno</th>
+            </tr>
+        </thead>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.nombre }}</td>
+            {% if curso.turno == 1 %}
+            <td>Mañana</td>
+            {% elif curso.turno == 2 %}
+            <td>Tarde</td>
+            {% else %}
+            <td>Noche</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+    <ul>
+
+        {%if user.is_authenticated %}
+        <li>
+            <a href="{% url 'logout' %}">Cerrar Sesión</a>
+        </li>
+        {% else %}
+        <li>
+            <a href="{% url 'login' %}">Ingresar</a>
+        </li>
+        {%endif%}
+
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    ¡<strong>Hola</strong>, <em>{{ nombre }}</em>!
+    {% if cursos > 0 %}
+    Hiciste {{ cursos }} cursos.
+    {% else %}
+    No hiciste ningún curso todavía.
+    {% endif %}
+
+    <h3>Otros alumnos</h3>
+    <ul>
+        {% for alumno in alumnos %}
+        <li>{{ alumno }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+</html>

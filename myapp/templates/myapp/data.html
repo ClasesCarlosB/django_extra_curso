@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ¡<strong>Hola</strong>, <em>{{ nombre }}</em>!-->
+
+    <!--   ¡<strong>Hola</strong>, <em>{{ nombre }}</em>!
+    Hiciste {{ cursos }} cursos y ahora estás haciendo el curso de {{ curso_actual }}.
+    -->
+    ¡<strong>Hola</strong>, <em>{{ nombre }}</em>!
+    Hiciste {{ cursos }} cursos y ahora estás haciendo el curso de {{ curso_actual.nombre }}
+    <br> en el turno {{ curso_actual.turno }}. Tu primer curso fue {{ cursos_anteriores.0 }}.
+
+</body>
+
+</html>

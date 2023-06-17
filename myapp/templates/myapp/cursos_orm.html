@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de cursos</title>
+</head>
+
+<body>
+    <table style="border: 1px solid">
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Inscriptos</th>
+                <th>Truno</th>
+            </tr>
+        </thead>
+        {% for curso in cursos %}
+        <tr>
+            <td>{{ curso.nombre }}</td>
+            <td>{{ curso.inscriptos }}</td>
+            <td>{{ curso.turno }}</td>
+
+
+            <!--  
+            {% if curso.turno is 1 %}
+            <td>Mañana</td>
+            {% elif curso.turno is 2 %}
+            <td>Tarde</td>
+            {% else %}
+            <td>Noche</td>
+            {% endif %}
+            <td>{{ turno }}</td>
+            -->
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
