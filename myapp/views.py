@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, HttpRequest
 from django.urls import reverse
 from . import forms
 import sqlite3
 import requests
 from .models import Curso
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
 
 def index(request):
@@ -243,3 +245,21 @@ def cursos_orm_log(request):
     # print(cursos[0].get_turno_display())
     ctx = {"cursos": cursos}
     return render(request, "myapp/cursos_log.html", ctx)
+
+
+def registrar(request):
+    if request.method == "POST":
+        formulario = forms.FormularioRegistro(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            usuario = authenticate(
+                username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user=usuario)
+            messages.success(request, "Te has registrado correctamente!")
+            return HttpResponseRedirect(reverse("nuevo"))
+        else:
+            messages.warning(
+                request, 'Error.Respeta las indicaciones al crear un nuevo usuario')
+    form = forms.FormularioRegistro()
+    ctx = {"form": form}
+    return render(request, "registration/registro.html", ctx)

@@ -1,6 +1,8 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Curso
+from django.contrib.auth.forms import UserCreationForm
+
 
 class FormularioCurso(forms.Form):
     nombre = forms.CharField(label="Nombre", max_length=128)
@@ -19,8 +21,12 @@ class FormularioCurso(forms.Form):
     )
     """
 
+
 class FormularioCursoDos(ModelForm):
     class Meta:
         model = Curso
-        fields = ["nombre", "inscriptos","turno"]
-        
+        fields = ["nombre", "inscriptos", "turno"]
+
+
+class FormularioRegistro(UserCreationForm):
+    pass

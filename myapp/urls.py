@@ -23,4 +23,5 @@ urlpatterns = [
     path("cursos-json", views.cursos_json, name="cursos-json"),
     path("nuevo-curso-mf", views.nuevo_curso_mf, name="nuevo-curso-mf"),
     path("cursos-orm-log", views.cursos_orm_log, name="cursos-orm-log"),
+    path("registro", views.registrar, name="registro"),
 ]
